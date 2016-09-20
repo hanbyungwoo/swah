@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/temp_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#000000"
+
+        >
+        <!--app:popupTheme="@style/AppTheme.PopupOverlay">-->
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/activity_cctv_backBtn"
+                android:layout_width="30dp"
+                android:layout_centerVertical="true"
+                android:layout_height="30dp"
+                android:background="@drawable/back"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="40dp"
+                android:text="CCTV"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+
+    <ListView
+        android:layout_margin="8dp"
+        android:id="@+id/cctv_device"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:dividerHeight="8dp"
+        android:divider="#F0F0F0"
+        android:choiceMode="singleChoice"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/temp_toolbar"/>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/noDevice"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:text="등록된 기기가 없습니다."
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</RelativeLayout>
