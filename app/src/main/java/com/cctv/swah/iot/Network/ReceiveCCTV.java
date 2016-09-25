@@ -1,17 +1,11 @@
 package com.cctv.swah.iot.Network;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
-import android.media.MediaCodec;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.widget.ImageView;
 
 import com.cctv.swah.iot.AES256Cipher;
 import com.cctv.swah.iot.InfoManager;
@@ -24,11 +18,7 @@ import com.squareup.okhttp.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.net.URLDecoder;
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 
@@ -185,8 +175,6 @@ public class ReceiveCCTV extends AsyncTask<String, Integer, String> {
 //        activity.startActivity(i);
 
     }
-
-//
 //
 //    public class VideoDecoderThread extends Thread {
 //        private static final String VIDEO = "video/";
@@ -196,54 +184,69 @@ public class ReceiveCCTV extends AsyncTask<String, Integer, String> {
 //
 //        private boolean eosReceived;
 //
-//        public boolean init(Surface surface, String filePath) {
+//        // str
+//        // byte[] bb = null;
+//        // bb = str.getBytes();
 //
+//        public boolean init(Surface surface) {
+//            Log.e("TAG", "init시작");
 //            eosReceived = false;
+//
 //            try {
 //                mExtractor = new MediaExtractor();
-////                mExtractor.setDataSource(filePath);
-//
+//                Log.e("!!!!!", decode_video);
+//                Log.e("TAG", "init시작_filepath경과 전");
+////			mExtractor.setDataSource(filePath);
+//                Log.e("TAG", "init시작_filepath경과");
 //                for (int i = 0; i < mExtractor.getTrackCount(); i++) {
 //                    MediaFormat format = mExtractor.getTrackFormat(i);
 //
-//                    String mime = format.getString(MediaFormat.KEY_MIME);
-//                    if (mime.startsWith(VIDEO)) {
-//                        mExtractor.selectTrack(i);
-//                        mDecoder = MediaCodec.createDecoderByType(mime);
-//                        try {
-//                            Log.d(TAG, "format : " + format);
-//                            mDecoder.configure(format, surface, null, 0 /* Decoder */);
+//                    String mime = format.getString("video/avc");
+//                    Log.e("TAG", "init시작_filepath경과_즁");
+////				if (mime.startsWith(VIDEO)) {
+//                    Log.e("TAG", "init시작_filepath경과________ㅠㅠㅠ");
+//                    mExtractor.selectTrack(i);
+//                    mDecoder = MediaCodec.createDecoderByType(mime);
+//                    try {
+//                        Log.d(TAG, "format : " + format);
+//                        mDecoder.configure(format, surface, null, 0 /* Decoder */);
 //
-//                        } catch (IllegalStateException e) {
-//                            Log.e(TAG, "codec '" + mime + "' failed configuration. " + e);
-//                            return false;
-//                        }
-//
-//                        mDecoder.start();
-//                        break;
+//                    } catch (IllegalStateException e) {
+//                        Log.e(TAG, "codec '" + mime + "' failed configuration. " + e);
+//                        return false;
 //                    }
+//                    Log.e("TAG", "init시작_start앞에서");
+//                    mDecoder.start();
+//                    break;
 //                }
+////			}
 //
 //            } catch (IOException e) {
 //                e.printStackTrace();
 //            }
+//            Log.e("TAG", "init끝");
 //
 //            return true;
 //        }
 //
 //        @Override
 //        public void run() {
+//            Log.e("aaaaaaaaaaaaaaaaaaaa", "런런런런런러널너런ㄹ너러너");
 //            MediaCodec.BufferInfo info = new MediaCodec.BufferInfo();
-//            /////////////////////// string 을 byte로 변경
-//            ByteBuffer inputBuffers = null;
-//            try {
-//                byte[] b = decode_video.getBytes("US-ASCII");
-//                inputBuffers = ByteBuffer.wrap(b);
-//            } catch(Exception e) {
-//                Log.e("error", e+"");
-//            }
-////            ByteBuffer[] inputBuffers = mDecoder.getInputBuffers();
+//            // str
+//            // byte[] bb = null;
+//            // bb = str.getBytes();
+//
+//            byte[] array = decode_video.getBytes();
+//            ByteBuffer info1 = ByteBuffer.wrap(array);
+////
+////		ByteBuffer[] inputBuffers = ByteBuffer.wrap(array);
 //            mDecoder.getOutputBuffers();
+//
+////        BufferInfo info = new BufferInfo();
+////        ByteBuffer[] inputBuffers = mDecoder.getInputBuffers();
+////        mDecoder.getOutputBuffers();
+//
 //
 //            boolean isInput = true;
 //            boolean first = false;
@@ -254,8 +257,8 @@ public class ReceiveCCTV extends AsyncTask<String, Integer, String> {
 //                    int inputIndex = mDecoder.dequeueInputBuffer(10000);
 //                    if (inputIndex >= 0) {
 //                        // fill inputBuffers[inputBufferIndex] with valid data
-//
-//                        ByteBuffer inputBuffer = inputBuffers[inputIndex];
+////					ByteBuffer inputBuffer = inputBuffers[inputIndex];
+//                        ByteBuffer inputBuffer = info1;
 //
 //                        int sampleSize = mExtractor.readSampleData(inputBuffer, 0);
 //
@@ -291,9 +294,8 @@ public class ReceiveCCTV extends AsyncTask<String, Integer, String> {
 //                            first = true;
 //                        }
 //                        try {
-//                            long sleepTime = (1000000 / 1000) - (System.currentTimeMillis() - startWhen);
-//
-//                            Log.d(TAG, "info.presentationTimeUs : " + (1000000 / 1000) + " playTime: " + (System.currentTimeMillis() - startWhen) + " sleepTime : " + sleepTime);
+//                            long sleepTime = (10000 / 1000) - (System.currentTimeMillis() - startWhen);
+//                            Log.d(TAG, "info.presentationTimeUs : " + (10000 / 1000) + " playTime: " + (System.currentTimeMillis() - startWhen) + " sleepTime : " + sleepTime);
 //
 //                            if (sleepTime > 0)
 //                                Thread.sleep(sleepTime);
@@ -307,7 +309,7 @@ public class ReceiveCCTV extends AsyncTask<String, Integer, String> {
 //                }
 //
 //                // All decoded frames have been rendered, we can stop playing now
-//                if ((info.flags & MediaCodec.BUFFER_FLAG_END_OF_STREAM) != 0) {
+//                if ((1 & MediaCodec.BUFFER_FLAG_END_OF_STREAM) != 0) {
 //                    Log.d(TAG, "OutputBuffer BUFFER_FLAG_END_OF_STREAM");
 //                    break;
 //                }
@@ -322,8 +324,5 @@ public class ReceiveCCTV extends AsyncTask<String, Integer, String> {
 //            eosReceived = true;
 //        }
 //    }
-//
-//    public static ByteBuffer str_to_bb(String msg, Charset charset){
-//        return ByteBuffer.wrap(msg.getBytes(charset));
-//    }
+
 }

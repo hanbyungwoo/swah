@@ -13,6 +13,7 @@ import com.cctv.swah.iot.Model.DeviceInfo;
 import com.cctv.swah.iot.Network.ReceiveCCTV;
 import com.cctv.swah.iot.Network.VideoDecoderThread;
 
+
 public class CCTVActivity extends AppCompatActivity implements SurfaceHolder.Callback {
     VideoDecoderThread mVideoDecoder;
 
@@ -57,9 +58,9 @@ public class CCTVActivity extends AppCompatActivity implements SurfaceHolder.Cal
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         Log.e("TAAAAAAAAAAAAAAAA", "---SDAASdasdasd");
-        if (mVideoDecoder != null) {
+//        if (mVideoDecoder != null) {
             mVideoDecoder.close();
-        }
+//        }
     }
 
     void setCall() {
