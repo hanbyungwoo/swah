@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private BackPressCloseHandler backPressCloseHandler;
     Login_CustomDialog login_customDialog;
     Button cctv_button, _button;
-    TextView login, logout;
+    TextView login, logout, hidden_ip;
     ImageView device;
 
     @Override
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String content = "aaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbccccccccccccccccccddddddddddddddddddddddeeeeeeeeeeeeeeeeeeefffffffffffffffffff";
+        String content = "f";
         byte[] array = content.getBytes();
         ByteBuffer info = ByteBuffer.wrap(array);
 
@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         backPressCloseHandler = new BackPressCloseHandler(this);
         login = (TextView)findViewById(R.id.login);
         logout = (TextView)findViewById(R.id.logout);
+        hidden_ip = (TextView)findViewById(R.id.hidden_ip);
 
         SharedPreferences login_info = getApplication().getSharedPreferences("Mylogin", Context.MODE_PRIVATE);
         String name = login_info.getString("user_id", "no");
@@ -93,9 +94,24 @@ public class MainActivity extends AppCompatActivity {
             logout.setVisibility(View.VISIBLE);
         }
 
+        SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
+        InfoManager.text1 = pref.getString("cctv", "");
+        InfoManager.url = pref.getString("url", "");
+        InfoManager.text2 = pref.getString("text2", "");
+        InfoManager.text3 = pref.getString("text3", "");
+        InfoManager.text4 = pref.getString("text4", "");
+
     }
 
     void setListener() {
+        hidden_ip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), HiddenActivity.class);
+                startActivity(intent);
+            }
+        });
+
         cctv_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CCTVDeviceActivity.class);

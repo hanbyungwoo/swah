@@ -22,6 +22,7 @@ public class CCTVDeviceActivity extends AppCompatActivity {
     ListView cctv_list;
     TextView noDevice;
     ImageView activity_cctv_backBtn;
+    TextView hidden_ip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +36,33 @@ public class CCTVDeviceActivity extends AppCompatActivity {
     }
 
     void setCall() {
+        hidden_ip = (TextView)findViewById(R.id.hidden_ip);
         cctv_list = (ListView)findViewById(R.id.cctv_device);
         noDevice = (TextView)findViewById(R.id.noDevice);
         activity_cctv_backBtn = (ImageView)findViewById(R.id.activity_cctv_backBtn);
+
+
+        SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
+        InfoManager.text1 = pref.getString("cctv", "");
+        InfoManager.url = pref.getString("url", "");
+
     }
 
     void setListener() {
+        hidden_ip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), HiddenActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         cctv_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(view.getContext(), CCTVActivity.class);
+//                Intent intent = new Intent(view.getContext(), CCTVActivity.class);
+                Intent intent = new Intent(view.getContext(), TestActivity.class);
                 DeviceInfo device_Info = (DeviceInfo) parent.getAdapter().getItem(position);
                 intent.putExtra("DEVICEINFO", device_Info);
                 startActivity(intent);
@@ -60,17 +78,17 @@ public class CCTVDeviceActivity extends AppCompatActivity {
             }
         });
 
-        activity_cctv_backBtn.setOnClickListener(new View.OnClickListener() {
+
+    }
+
+    void setNetwork() {
+        SharedPreferences login_info = getApplication().getSharedPreferences("Mylogin", Context.MODE_PRIVATE);
+        String name = login_info.getString("user_id", "no");activity_cctv_backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-    }
-
-    void setNetwork() {
-        SharedPreferences login_info = getApplication().getSharedPreferences("Mylogin", Context.MODE_PRIVATE);
-        String name = login_info.getString("user_id", "no");
         String pw = login_info.getString("pw", "no");
         Log.e("aaaaaaaaaaa", name + "--" + pw);
         if(name.equals("no") && pw.equals("no")) {

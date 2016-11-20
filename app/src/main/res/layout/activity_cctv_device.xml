@@ -32,6 +32,11 @@
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
+            <TextView
+                android:id="@+id/hidden_ip"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"/>
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
@@ -56,6 +61,8 @@
         android:text="등록된 기기가 없습니다."
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+
 
 
 </RelativeLayout>

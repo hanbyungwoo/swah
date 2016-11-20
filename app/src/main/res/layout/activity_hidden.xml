@@ -1,0 +1,142 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/passwordActivity_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#000000"
+
+        >
+        <!--app:popupTheme="@style/AppTheme.PopupOverlay">-->
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/activity_hidden_backBtn"
+                android:layout_width="30dp"
+                android:layout_centerVertical="true"
+                android:layout_height="30dp"
+                android:background="@drawable/back"/>
+
+            <TextView
+                android:id="@+id/main_tem_hum_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="40dp"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:text="cctv"
+            android:id="@+id/cctv_text"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="30sp"
+            />
+        <EditText
+            android:layout_toRightOf="@+id/cctv_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText"
+            android:inputType="text"
+            />
+
+        <TextView
+            android:text="url"
+            android:textSize="30sp"
+            android:id="@+id/url_text"
+            android:layout_below="@+id/cctv_text"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_below="@+id/cctv_text"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText2"
+            android:inputType="text"
+            android:layout_toRightOf="@+id/url_text"
+            />
+
+        <TextView
+            android:text="text2"
+            android:textSize="30sp"
+            android:id="@+id/url_text2"
+            android:layout_below="@+id/url_text"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_below="@+id/url_text"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText3"
+            android:inputType="text"
+            android:layout_toRightOf="@+id/url_text2"
+            />
+
+        <TextView
+            android:text="text3"
+            android:textSize="30sp"
+            android:id="@+id/url_text3"
+            android:layout_below="@+id/url_text2"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_below="@+id/url_text2"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText4"
+            android:inputType="text"
+            android:layout_toRightOf="@+id/url_text3"
+            />
+
+        <TextView
+            android:text="text4"
+            android:textSize="30sp"
+            android:id="@+id/url_text4"
+            android:layout_below="@+id/url_text3"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_below="@+id/url_text3"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText5"
+            android:inputType="text"
+            android:layout_toRightOf="@+id/url_text3"
+            />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+
+</LinearLayout>

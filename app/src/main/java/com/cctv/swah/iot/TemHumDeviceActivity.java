@@ -38,6 +38,11 @@ public class TemHumDeviceActivity extends AppCompatActivity {
         tem_list = (ListView)findViewById(R.id.temperature_device);
         noDevice = (TextView)findViewById(R.id.noDevice);
         activity_temp_backBtn = (ImageView)findViewById(R.id.activity_temp_backBtn);
+
+        SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
+        InfoManager.text1 = pref.getString("cctv", "");
+        InfoManager.url = pref.getString("url", "");
+
     }
 
     void setListener() {

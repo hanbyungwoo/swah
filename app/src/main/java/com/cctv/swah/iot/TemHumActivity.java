@@ -12,7 +12,7 @@ import com.cctv.swah.iot.Network.ReceiveTemHum;
 public class TemHumActivity extends AppCompatActivity {
 
 
-    TextView text_temperature, text_humidity;
+    TextView text_temperature, text_humidity, main_tem_hum_text;
     ImageView activity_tem_hum_backBtn, refresh;
     DeviceInfo deviceInfo;
 
@@ -29,9 +29,12 @@ public class TemHumActivity extends AppCompatActivity {
     void setCall() {
         deviceInfo = (DeviceInfo) getIntent().getSerializableExtra("DEVICEINFO");
         activity_tem_hum_backBtn = (ImageView)findViewById(R.id.activity_tem_hum_backBtn);
+        main_tem_hum_text = (TextView)findViewById(R.id.main_tem_hum_text);
         text_humidity = (TextView)findViewById(R.id.text_humidity);
         text_temperature = (TextView)findViewById(R.id.text_temperature);
         refresh = (ImageView)findViewById(R.id.refresh);
+
+        main_tem_hum_text.setText(deviceInfo.getModel());
     }
     void setNetwork() {
         ReceiveTemHum task = new ReceiveTemHum(TemHumActivity.this, deviceInfo.getName(), deviceInfo.getPw(), deviceInfo.getModel(), text_temperature, text_humidity);

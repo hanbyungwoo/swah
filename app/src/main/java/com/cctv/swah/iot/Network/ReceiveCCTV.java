@@ -145,25 +145,25 @@ public class ReceiveCCTV extends AsyncTask<String, Integer, String> {
                 var8.printStackTrace();
             }
 
-
+            Log.e("AES256_Decode_video!!", "==========================");
 
             Log.e("AES256_Decode_video", decode_video);
 
-            start();
+            start(decode_video);
 
-
-
-
-
+//            Info.data =decode_video;
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
     }
 
-    void start() {
+    void start(String video) {
         VideoDecoderThread thread = new VideoDecoderThread();
-        thread.init(holder.getSurface(), decode_video);
+//        thread.init(holder.getSurface(), video);
+        thread.init(holder.getSurface(), "myfile.h264");
 
 //        MediaFormat format = MediaFormat.createVideoFormat("video/avc", 320, 240);
 //        MediaCodec codec = MediaCodec.createDecoderByType("video/avc");
